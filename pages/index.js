@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -6,6 +7,7 @@ export default function Home() {
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
+        <Link href="/posts/first-post"><a>Link to my first post</a></Link>
       </Head>
 
       <main>
