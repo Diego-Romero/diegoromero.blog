@@ -1,6 +1,12 @@
 ---
 title: "NextJS types of rendering"
+description: "NextJS types of rendering"
 date: "2022-07-10"
+tags:
+  - react
+  - nextjs
+  - web
+  - javascript
 ---
 
 # Next JS
