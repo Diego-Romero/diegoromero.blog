@@ -5,41 +5,43 @@ import Date from "../../components/Date";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 
-// function Post(props): NextPage<PostProps> {
-//   const { postData } = props;
-//   return (
-//     <Layout>
-//       <Head>
-//         <title>{postData.title}</title>
-//       </Head>
-//       <h1>{postData.title}</h1>
-//       <div>
-//         <Date dateString={postData.date} />
-//       </div>
-//       <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-//     </Layout>
-//   );
-// }
-
 interface Props {
   post: Post;
 }
 
 export const PostPage: NextPage<Props> = ({ post }) => {
-  console.log(post);
-  return <div>Post goes here</div>;
+  return (
+    <Layout>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+      <h1>{post.title}</h1>
+      <div>
+        <Date dateString={post.date} />
+      </div>
+      <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+    </Layout>
+  );
 };
 
 interface Params extends ParsedUrlQuery {
   postId: string;
 }
 
+/* This is needed to know which static paths will be available */
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = getAllPostsIds();
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+/* This are the props that will be passed down to each individual post at build time */
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
   const { postId } = params!;
-  console.log(params);
-
   const post = await getPostData(postId);
   return {
     props: {
@@ -48,13 +50,4 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   };
 };
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const paths = getAllPostsIds();
-  console.log(paths);
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export default Post;
+export default PostPage;

@@ -42,15 +42,15 @@ Important: The returned list is not just an array of strings — it must be an a
  */
 export function getAllPostsIds() {
   const fileNames = fs.readdirSync(postsDirectory);
-
-  return fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, "");
+  const result = fileNames.map((fileName) => {
+    const postId = fileName.replace(/\.md$/, "");
     return {
       params: {
-        id,
+        postId,
       },
     };
   });
+  return result;
 }
 
 export interface Post {
