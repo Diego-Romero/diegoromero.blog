@@ -1,20 +1,75 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "./layout.module.css";
-import utilStyles from "../../styles/utils.module.css";
-import Link from "next/link";
 import React from "react";
+import NextLink from "next/link";
+import { Flex, HStack, Link, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
-const name = "Diego Romero";
-export const siteTitle = "Next.js Sample Website";
+export const siteTitle = "Diego Romero - Blog";
+
+const maxW = "960px";
+const gradientMain = "linear(to-l, #7928CA, #FF0080)";
+const gradientSecondary = "linear(to-r, green.200, pink.500)";
+
+const NavLink: React.FunctionComponent<{ href: string; text: string }> = ({
+  href,
+  text,
+}) => {
+  return (
+    <NextLink href={href} passHref>
+      <Link>{text}</Link>
+    </NextLink>
+  );
+};
+
+const NavBar = () => {
+  const router = useRouter();
+  return (
+    <Flex
+      as="header"
+      borderBottom="1px"
+      borderColor="gray.200"
+      mb={4}
+      py={4}
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Flex
+        maxW={maxW}
+        width="100%"
+        px={8}
+        alignContent="center"
+        justifyContent="space-between"
+      >
+        <Text
+          fontSize="2xl"
+          bgGradient={gradientMain}
+          bgClip="text"
+          fontWeight="extrabold"
+          onClick={() => router.push("/")}
+          cursor="pointer"
+          _hover={{
+            bgGradient: gradientSecondary,
+          }}
+        >
+          Diego Romero
+        </Text>
+        <HStack spacing="4">
+          <NavLink href="/" text="Home" />
+          <NavLink href="/blog" text="blog" />
+        </HStack>
+      </Flex>
+    </Flex>
+  );
+};
 
 interface Props {
   home?: boolean;
+  children?: React.ReactNode;
 }
 
 const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -31,7 +86,8 @@ const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <title>Diego Romero</title>
       </Head>
-      <header className={styles.header}>
+      <NavBar />
+      {/* <header className={styles.header}>
         {home ? (
           <>
             <Image
@@ -65,14 +121,12 @@ const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
             </h2>
           </>
         )}
-      </header>
+      </header> */}
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
+        <Flex>
+          <NavLink href="/" text="← Back to home" />
+        </Flex>
       )}
     </div>
   );
