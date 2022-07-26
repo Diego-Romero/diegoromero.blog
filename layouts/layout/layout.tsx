@@ -1,12 +1,12 @@
 import Head from "next/head";
 import React from "react";
 import NextLink from "next/link";
-import { Flex, HStack, Link, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Link, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 export const siteTitle = "Diego Romero - Blog";
 
-const maxW = "960px";
+const maxW = "700px";
 const gradientMain = "linear(to-l, #7928CA, #FF0080)";
 const gradientSecondary = "linear(to-r, green.200, pink.500)";
 
@@ -36,7 +36,6 @@ const NavBar = () => {
       <Flex
         maxW={maxW}
         width="100%"
-        px={8}
         alignContent="center"
         justifyContent="space-between"
       >
@@ -55,7 +54,7 @@ const NavBar = () => {
         </Text>
         <HStack spacing="4">
           <NavLink href="/" text="Home" />
-          <NavLink href="/blog" text="blog" />
+          <NavLink href="/blog" text="Blog" />
         </HStack>
       </Flex>
     </Flex>
@@ -69,7 +68,7 @@ interface Props {
 
 const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
   return (
-    <div>
+    <Box bgColor="gray.50" height="100vh">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -87,48 +86,22 @@ const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
         <title>Diego Romero</title>
       </Head>
       <NavBar />
-      {/* <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile-image.jpeg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile-image.jpeg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </header> */}
-      <main>{children}</main>
+      <Flex
+        alignItems="center"
+        as="main"
+        flexDir="column"
+        width="100%"
+        px={4}
+        height="100vh"
+      >
+        <Box maxW={maxW}>{children}</Box>
+      </Flex>
       {!home && (
         <Flex>
           <NavLink href="/" text="← Back to home" />
         </Flex>
       )}
-    </div>
+    </Box>
   );
 };
 

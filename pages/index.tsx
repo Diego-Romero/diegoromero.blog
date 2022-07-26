@@ -5,6 +5,7 @@ import { getSortedPostsData, Post } from "../utils/posts";
 import Link from "next/link";
 import Date from "../components/Date";
 import { GetStaticProps, NextPage } from "next";
+import { Avatar, Stack, Text } from "@chakra-ui/react";
 
 interface Props {
   allPosts: Post[];
@@ -17,13 +18,18 @@ const Home: NextPage<Props> = (props) => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>
+      <Stack justifyContent="center" alignItems="center" spacing={6}>
+        <Avatar
+          size="2xl"
+          name="Diego Romero"
+          src="/images/profile-image.jpeg"
+        />
+        <Text>
           Hi, my name is Diego Romero and I'm a Software Engineer living in
           London. I currently work as a fullstack engineer at Voisey (owned by
           Snap). You can contact me in Twitter.
-        </p>
-      </section>
+        </Text>
+      </Stack>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
