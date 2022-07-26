@@ -14,7 +14,6 @@ import {
   Flex,
   Heading,
   Link,
-  List,
   ListItem,
   Stack,
   Text,
