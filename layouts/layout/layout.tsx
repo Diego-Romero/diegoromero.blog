@@ -17,7 +17,9 @@ const NavLink: React.FunctionComponent<{ href: string; text: string }> = ({
 }) => {
   return (
     <NextLink href={href} passHref>
-      <Link>{text}</Link>
+      <Link>
+        <Text fontSize="xl">{text}</Text>
+      </Link>
     </NextLink>
   );
 };
@@ -27,6 +29,7 @@ const NavBar = () => {
   return (
     <Flex
       as="header"
+      color="gray.700"
       borderBottom="1px"
       borderColor={borderColor}
       py={4}
@@ -64,7 +67,7 @@ interface Props {
 
 const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
   return (
-    <Box bgColor="gray.100" height="100vh - 70px">
+    <Box bgColor="gray.100">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
