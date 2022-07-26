@@ -28,6 +28,8 @@ interface Props {
   allPosts: Post[];
 }
 
+const iconsSize = "4xl";
+
 const Home: NextPage<Props> = (props) => {
   const { allPosts } = props;
   const router = useRouter();
@@ -73,7 +75,7 @@ const Home: NextPage<Props> = (props) => {
               aria-label="twitter"
               icon={<FaTwitter />}
               size="2xl"
-              fontSize={"5xl"}
+              fontSize={iconsSize}
               variant="ghost"
               colorScheme="twitter"
               onClick={() =>
@@ -86,7 +88,7 @@ const Home: NextPage<Props> = (props) => {
               aria-label="Github"
               icon={<FaGithub />}
               size="2xl"
-              fontSize={"5xl"}
+              fontSize={iconsSize}
               variant="ghost"
               onClick={() => router.push("https://github.com/diego-romero")}
             />
@@ -95,7 +97,7 @@ const Home: NextPage<Props> = (props) => {
               icon={<FaLinkedin />}
               size="2xl"
               colorScheme="linkedin"
-              fontSize={"5xl"}
+              fontSize={iconsSize}
               variant="ghost"
               onClick={() =>
                 router.push("https://www.linkedin.com/in/dev-diego-romero/")
@@ -104,7 +106,14 @@ const Home: NextPage<Props> = (props) => {
           </HStack>
           <Stack>
             <Heading as="h3">About</Heading>
-            <Text>About section</Text>
+            <Text>
+              I'm passionate about technology and software, particularly about
+              toying with emerging technologies. Most recently I've been
+              building projects with Typescript, Javascript, Serverless
+              technologies, Firebase, React, Node, Kotlin, Java and Android. In
+              my spare time you will find me learning Brazilian Jiu Jitsu,
+              dancing salsa or playing guitar.
+            </Text>
           </Stack>
           <Stack>
             <Heading as="h3">Featured Projects</Heading>
