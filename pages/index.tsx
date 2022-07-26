@@ -11,11 +11,9 @@ import { GetStaticProps, NextPage } from "next";
 import {
   Avatar,
   Box,
-  Button,
   Flex,
   Heading,
   HStack,
-  Icon,
   IconButton,
   Link,
   ListItem,
