@@ -273,14 +273,19 @@ const Home: NextPage<Props> = (props) => {
                       </Button>
                     ))}
                   </HStack>
-                  <br />
-                  <HStack flexDir="row">
+                  <Flex flexDir="row" flexWrap="wrap" mt={2}>
                     {project.tags.map((tag, index) => (
-                      <Badge variant="subtle" colorScheme="purple" key={index}>
+                      <Badge
+                        variant="subtle"
+                        colorScheme="purple"
+                        key={index}
+                        mt={2}
+                        mr={2}
+                      >
                         {tag}
                       </Badge>
                     ))}
-                  </HStack>
+                  </Flex>
                 </ListItem>
               ))}
             </List>
