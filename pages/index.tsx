@@ -11,14 +11,20 @@ import { GetStaticProps, NextPage } from "next";
 import {
   Avatar,
   Box,
+  Button,
   Flex,
   Heading,
+  HStack,
+  Icon,
+  IconButton,
   Link,
   ListItem,
   Stack,
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 interface Props {
   allPosts: Post[];
@@ -26,6 +32,7 @@ interface Props {
 
 const Home: NextPage<Props> = (props) => {
   const { allPosts } = props;
+  const router = useRouter();
   return (
     <Layout home>
       <Head>
@@ -34,10 +41,10 @@ const Home: NextPage<Props> = (props) => {
       <Flex
         flexDir={["column", null, "row"]}
         width="100%"
-        justifyContent="space-between"
+        justifyContent={["center", null, "space-between"]}
         height="100%"
       >
-        <Stack spacing={8} alignItems="flex-start" width="50%" pt="8">
+        <Stack spacing={[4, null, 8]} width={["100%", null, "50%"]} py="8">
           <Avatar
             size="4xl"
             name="Diego Romero"
@@ -59,9 +66,44 @@ const Home: NextPage<Props> = (props) => {
             </Heading>
           </Box>
           <Heading as="h2">
-            I'm a Software Engineer @Snapchat, based in London, UK.
+            I'm a Software Engineer from 🇬🇹, working{" "}
+            <Link href="https://www.snapchat.com">@Snapchat</Link>, based in
+            London 🇬🇧
           </Heading>
-          <Text>Social stuff goes here</Text>
+          <HStack>
+            <IconButton
+              aria-label="twitter"
+              icon={<FaTwitter />}
+              size="2xl"
+              fontSize={"5xl"}
+              variant="ghost"
+              colorScheme="twitter"
+              onClick={() =>
+                router.push(
+                  "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fkodr.me%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ediego_romero_x&region=follow_link&screen_name=diego_romero_x"
+                )
+              }
+            />
+            <IconButton
+              aria-label="Github"
+              icon={<FaGithub />}
+              size="2xl"
+              fontSize={"5xl"}
+              variant="ghost"
+              onClick={() => router.push("https://github.com/diego-romero")}
+            />
+            <IconButton
+              aria-label="Linkedin"
+              icon={<FaLinkedin />}
+              size="2xl"
+              colorScheme="linkedin"
+              fontSize={"5xl"}
+              variant="ghost"
+              onClick={() =>
+                router.push("https://www.linkedin.com/in/dev-diego-romero/")
+              }
+            />
+          </HStack>
           <Stack>
             <Heading as="h3">About</Heading>
             <Text>About section</Text>
@@ -82,7 +124,7 @@ const Home: NextPage<Props> = (props) => {
           borderColor={borderColor}
           textAlign="right"
           pl="10"
-          pt="8"
+          py="8"
         >
           <Heading as="h3" fontSize="3xl">
             Latest Articles

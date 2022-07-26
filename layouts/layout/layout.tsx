@@ -85,14 +85,7 @@ const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
         <title>Diego Romero</title>
       </Head>
       <NavBar />
-      <Flex
-        alignItems="center"
-        as="main"
-        flexDir="column"
-        width="100%"
-        px={4}
-        height="100vh"
-      >
+      <Flex alignItems="center" as="main" flexDir="column" width="100%" px={4}>
         <Box maxW={maxW} width="100%" height="100%">
           {children}
         </Box>
