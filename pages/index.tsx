@@ -10,29 +10,148 @@ import Date from "../components/Date";
 import { GetStaticProps, NextPage } from "next";
 import {
   Avatar,
+  Badge,
   Box,
+  Button,
   Flex,
   Heading,
   HStack,
   IconButton,
   Link,
+  List,
+  ListIcon,
   ListItem,
   Stack,
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { useRouter } from "next/router";
+import {
+  FaCode,
+  FaExternalLinkAlt,
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
+import { IconType } from "react-icons";
+import React from "react";
 
 interface Props {
   allPosts: Post[];
 }
 
 const iconsSize = "4xl";
+const tags = {
+  typescript: "Typescript",
+  react: "React",
+  nextjs: "Next JS",
+  firebase: "Firebase",
+  googleCloudFunctions: "Google Cloud Functions",
+  vercel: "Vercel",
+  mouseTrap: "Mouse Trap",
+  netlify: "Netlify",
+  mongoDb: "Mongo DB",
+  node: "Node",
+  express: "Express",
+  aws: "Aws",
+  passportJs: "Passport JS",
+  sendgrid: "Sendgrid",
+  docusaurus: "Docusaurus",
+};
+const featuredProjects: {
+  title: string;
+  description: string[];
+  url: string;
+  tags: string[];
+  links: { name: string; url: string; icon: IconType }[];
+  icon: IconType;
+}[] = [
+  {
+    title: "Deepflow",
+    description: [
+      "Deepflow is a software research project whose focus is to find out whether it is possible to help the user achieve more and better periods of Deep Work.",
+    ],
+    icon: FaCode,
+    url: "http://deepflow.vercel.app",
+    links: [
+      {
+        name: "Website",
+        url: "http://deepflow.vercel.app",
+        icon: FaExternalLinkAlt,
+      },
+      {
+        name: "Github",
+        url: "https://github.com/Diego-Romero/deepflow",
+        icon: FaGithub,
+      },
+      {
+        name: "Demo",
+        url: "https://www.youtube.com/watch?v=A3RsoN5fAz4",
+        icon: FaYoutube,
+      },
+    ],
+    tags: [
+      tags.typescript,
+      tags.react,
+      tags.firebase,
+      tags.googleCloudFunctions,
+      tags.nextjs,
+      tags.vercel,
+    ],
+  },
+  {
+    title: "Listu",
+    description: [
+      "Looking to keep track of lists with your friends, team-mates, etc?",
+    ],
+    icon: FaCode,
+    url: "https://listu.me",
+    links: [
+      {
+        name: "Website",
+        url: "https://listu.me",
+        icon: FaExternalLinkAlt,
+      },
+      {
+        name: "Github Client",
+        url: "https://github.com/Diego-Romero/listu-client",
+        icon: FaGithub,
+      },
+      {
+        name: "Github API",
+        url: "https://github.com/Diego-Romero/listu-api",
+        icon: FaGithub,
+      },
+    ],
+    tags: [
+      tags.typescript,
+      tags.react,
+      tags.node,
+      tags.express,
+      tags.aws,
+      tags.mongoDb,
+    ],
+  },
+  {
+    title: "KODR",
+    description: [
+      "Looking to learn some fundamentals about algorithms in other languages different than English? ",
+    ],
+    icon: FaCode,
+    url: "https://listu.me",
+    links: [
+      {
+        name: "Website",
+        url: "https://kodr.me/en",
+        icon: FaExternalLinkAlt,
+      },
+    ],
+    tags: [tags.typescript, tags.react, tags.vercel, tags.docusaurus],
+  },
+];
 
 const Home: NextPage<Props> = (props) => {
   const { allPosts } = props;
-  const router = useRouter();
   return (
     <Layout home>
       <Head>
@@ -44,7 +163,11 @@ const Home: NextPage<Props> = (props) => {
         justifyContent={["center", null, "space-between"]}
         height="100%"
       >
-        <Stack spacing={[4, null, 8]} width={["100%", null, "50%"]} py="8">
+        <Stack
+          spacing={[4, null, 8]}
+          width={["100%", null, "50%"]}
+          py={["4", null, "8"]}
+        >
           <Avatar
             size="4xl"
             name="Diego Romero"
@@ -79,8 +202,9 @@ const Home: NextPage<Props> = (props) => {
               variant="ghost"
               colorScheme="twitter"
               onClick={() =>
-                router.push(
-                  "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fkodr.me%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ediego_romero_x&region=follow_link&screen_name=diego_romero_x"
+                window.open(
+                  "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fkodr.me%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ediego_romero_x&region=follow_link&screen_name=diego_romero_x",
+                  "_blank"
                 )
               }
             />
@@ -90,7 +214,9 @@ const Home: NextPage<Props> = (props) => {
               size="2xl"
               fontSize={iconsSize}
               variant="ghost"
-              onClick={() => router.push("https://github.com/diego-romero")}
+              onClick={() =>
+                window.open("https://github.com/diego-romero", "_blank")
+              }
             />
             <IconButton
               aria-label="Linkedin"
@@ -100,7 +226,10 @@ const Home: NextPage<Props> = (props) => {
               fontSize={iconsSize}
               variant="ghost"
               onClick={() =>
-                router.push("https://www.linkedin.com/in/dev-diego-romero/")
+                window.open(
+                  "https://www.linkedin.com/in/dev-diego-romero/",
+                  "_blank"
+                )
               }
             />
           </HStack>
@@ -111,13 +240,50 @@ const Home: NextPage<Props> = (props) => {
               toying with emerging technologies. Most recently I've been
               building projects with Typescript, Javascript, Serverless
               technologies, Firebase, React, Node, Kotlin, Java and Android. In
-              my spare time you will find me learning Brazilian Jiu Jitsu,
-              dancing salsa or playing guitar.
+              my spare time you will find me working out, dancing latin music
+              (salsa/bachata) or playing guitar.
             </Text>
           </Stack>
           <Stack>
             <Heading as="h3">Featured Projects</Heading>
-            <Text>List featured projects</Text>
+            <List spacing={8}>
+              {featuredProjects.map((project) => (
+                <ListItem>
+                  <Text fontWeight="bold" fontSize="xl" as="span">
+                    <ListIcon as={project.icon} fontSize="xl" />
+                    {project.title}
+                  </Text>
+                  <br />
+                  {project.description.map((text, index) => (
+                    <Text as="span" key={index}>
+                      {text}
+                      <br />
+                    </Text>
+                  ))}
+                  <HStack mt={4}>
+                    {project.links.map((link, index) => (
+                      <Button
+                        key={index}
+                        rightIcon={<link.icon />}
+                        variant="outline"
+                        colorScheme="purple"
+                        onClick={() => window.open(link.url, "_blank")}
+                      >
+                        {link.name}
+                      </Button>
+                    ))}
+                  </HStack>
+                  <br />
+                  <HStack flexDir="row">
+                    {project.tags.map((tag, index) => (
+                      <Badge variant="subtle" colorScheme="purple" key={index}>
+                        {tag}
+                      </Badge>
+                    ))}
+                  </HStack>
+                </ListItem>
+              ))}
+            </List>
           </Stack>
           <Stack>
             <Heading as="h3">Featured Articles</Heading>
@@ -126,12 +292,12 @@ const Home: NextPage<Props> = (props) => {
         </Stack>
         <Stack
           justifyContent="flex-start"
-          alignItems="flex-end"
-          borderLeft="1px"
+          alignItems={["flex-start", null, "flex-end"]}
+          borderLeft={[null, null, "1px"]}
           borderColor={borderColor}
-          textAlign="right"
-          pl="10"
-          py="8"
+          textAlign={[null, null, "right"]}
+          pl={[null, null, "10"]}
+          py={[null, null, "8"]}
         >
           <Heading as="h3" fontSize="3xl">
             Latest Articles

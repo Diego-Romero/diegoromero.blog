@@ -67,7 +67,7 @@ interface Props {
 
 const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
   return (
-    <Box bgColor="gray.100">
+    <Box bgColor="gray.50">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
