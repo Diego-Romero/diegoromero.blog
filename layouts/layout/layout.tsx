@@ -6,9 +6,10 @@ import { useRouter } from "next/router";
 
 export const siteTitle = "Diego Romero - Blog";
 
-const maxW = "700px";
-const gradientMain = "linear(to-l, #7928CA, #FF0080)";
-const gradientSecondary = "linear(to-r, green.200, pink.500)";
+const maxW = "800px";
+export const gradientMain = "linear(to-l, #7928CA, #FF0080)";
+export const gradientSecondary = "linear(to-r, green.200, pink.500)";
+export const borderColor = "gray.400";
 
 const NavLink: React.FunctionComponent<{ href: string; text: string }> = ({
   href,
@@ -27,9 +28,9 @@ const NavBar = () => {
     <Flex
       as="header"
       borderBottom="1px"
-      borderColor="gray.200"
-      mb={4}
+      borderColor={borderColor}
       py={4}
+      px={4}
       justifyContent="center"
       alignItems="center"
     >
@@ -41,14 +42,9 @@ const NavBar = () => {
       >
         <Text
           fontSize="2xl"
-          bgGradient={gradientMain}
-          bgClip="text"
           fontWeight="extrabold"
           onClick={() => router.push("/")}
           cursor="pointer"
-          _hover={{
-            bgGradient: gradientSecondary,
-          }}
         >
           Diego Romero
         </Text>
@@ -68,7 +64,7 @@ interface Props {
 
 const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
   return (
-    <Box bgColor="gray.50" height="100vh">
+    <Box bgColor="gray.100" height="100vh - 70px">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -94,7 +90,9 @@ const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
         px={4}
         height="100vh"
       >
-        <Box maxW={maxW}>{children}</Box>
+        <Box maxW={maxW} width="100%" height="100%">
+          {children}
+        </Box>
       </Flex>
       {!home && (
         <Flex>
