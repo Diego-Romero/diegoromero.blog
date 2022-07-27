@@ -146,7 +146,7 @@ const featuredProjects: {
         icon: FaExternalLinkAlt,
       },
     ],
-    tags: [tags.typescript, tags.react, tags.vercel, tags.docusaurus],
+    tags: [tags.typescript, tags.react, tags.netlify, tags.docusaurus],
   },
 ];
 
@@ -200,7 +200,7 @@ const Home: NextPage<Props> = (props) => {
               size="2xl"
               fontSize={iconsSize}
               variant="ghost"
-              colorScheme="twitter"
+              // colorScheme="twitter"
               onClick={() =>
                 window.open(
                   "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fkodr.me%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ediego_romero_x&region=follow_link&screen_name=diego_romero_x",
@@ -222,7 +222,7 @@ const Home: NextPage<Props> = (props) => {
               aria-label="Linkedin"
               icon={<FaLinkedin />}
               size="2xl"
-              colorScheme="linkedin"
+              // colorScheme="linkedin"
               fontSize={iconsSize}
               variant="ghost"
               onClick={() =>
@@ -237,11 +237,14 @@ const Home: NextPage<Props> = (props) => {
             <Heading as="h3">About</Heading>
             <Text>
               I'm passionate about technology and software, particularly about
-              toying with emerging technologies. Most recently I've been
-              building projects with Typescript, Javascript, Serverless
-              technologies, Firebase, React, Node, Kotlin, Java and Android. In
-              my spare time you will find me working out, dancing latin music
-              (salsa/bachata) or playing guitar.
+              toying with emerging technologies.
+              <br />
+              <br />
+              Most recently I've been building projects with Typescript,
+              Javascript, Serverless technologies, Firebase, React, Node,
+              Kotlin, Java and Android. In my spare time you will find me
+              working out, dancing latin music (salsa/bachata) or playing
+              guitar.
             </Text>
           </Stack>
           <Stack>
@@ -266,7 +269,7 @@ const Home: NextPage<Props> = (props) => {
                         key={index}
                         rightIcon={<link.icon />}
                         variant="outline"
-                        colorScheme="purple"
+                        colorScheme="cyan"
                         onClick={() => window.open(link.url, "_blank")}
                       >
                         {link.name}
@@ -277,7 +280,7 @@ const Home: NextPage<Props> = (props) => {
                     {project.tags.map((tag, index) => (
                       <Badge
                         variant="subtle"
-                        colorScheme="purple"
+                        colorScheme="cyan"
                         key={index}
                         mt={2}
                         mr={2}

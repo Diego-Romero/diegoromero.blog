@@ -1,8 +1,17 @@
 import Head from "next/head";
 import React from "react";
 import NextLink from "next/link";
-import { Box, Flex, HStack, Link, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  HStack,
+  IconButton,
+  Link,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 export const siteTitle = "Diego Romero - Blog";
 
@@ -26,10 +35,11 @@ const NavLink: React.FunctionComponent<{ href: string; text: string }> = ({
 
 const NavBar = () => {
   const router = useRouter();
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex
       as="header"
-      color="gray.700"
+      // color="gray.700"
       borderBottom="1px"
       borderColor={borderColor}
       py={4}
@@ -54,6 +64,16 @@ const NavBar = () => {
         <HStack spacing="4">
           <NavLink href="/" text="Home" />
           <NavLink href="/blog" text="Blog" />
+          <NavLink href="/projects" text="Projects" />
+          <IconButton
+            aria-label="toggle color mode"
+            variant="ghost"
+            colorScheme="cyan"
+            fontSize="xl"
+            size="md"
+            icon={colorMode === "light" ? <FaMoon /> : <FaSun />}
+            onClick={toggleColorMode}
+          />
         </HStack>
       </Flex>
     </Flex>
@@ -67,7 +87,7 @@ interface Props {
 
 const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
   return (
-    <Box bgColor="gray.50">
+    <Box>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
