@@ -15,7 +15,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 
 export const siteTitle = "Diego Romero - Blog";
 
-const maxW = "800px";
+const maxW = "1000px";
 export const gradientMain = "linear(to-l, #7928CA, #FF0080)";
 export const gradientSecondary = "linear(to-r, green.200, pink.500)";
 export const borderColor = "gray.400";

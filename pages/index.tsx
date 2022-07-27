@@ -3,7 +3,7 @@ import Layout, {
   borderColor,
   gradientMain,
   siteTitle,
-} from "../layouts/layout/layout";
+} from "../layouts/layout";
 import { getSortedPostsData, Post } from "../utils/posts";
 import NextLink from "next/link";
 import Date from "../components/Date";
