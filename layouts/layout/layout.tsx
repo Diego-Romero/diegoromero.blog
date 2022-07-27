@@ -58,13 +58,17 @@ const NavBar = () => {
           fontWeight="extrabold"
           onClick={() => router.push("/")}
           cursor="pointer"
+          _hover={{
+            bgGradient: gradientMain,
+            bgClip: "text",
+          }}
         >
           Diego Romero
         </Text>
         <HStack spacing="4">
-          <NavLink href="/" text="Home" />
           <NavLink href="/blog" text="Blog" />
           <NavLink href="/projects" text="Projects" />
+          <NavLink href="/Books" text="Books" />
           <IconButton
             aria-label="toggle color mode"
             variant="ghost"

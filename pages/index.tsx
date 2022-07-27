@@ -150,6 +150,136 @@ const featuredProjects: {
   },
 ];
 
+const LeftCol = () => (
+  <Stack
+    spacing={[4, null, 8]}
+    width={["100%", null, "50%"]}
+    py={["4", null, "8"]}
+  >
+    <Avatar
+      size="4xl"
+      name="Diego Romero"
+      src="/images/profile-image.jpeg"
+      boxShadow="outline"
+    />
+    <Box>
+      <Heading
+        as="h1"
+        margin={0}
+        fontSize="8xl"
+        bgGradient={gradientMain}
+        bgClip="text"
+      >
+        Hola!
+      </Heading>
+      <Heading as="h1" margin={0} fontSize="6xl">
+        I'm Diego 🤙🏽
+      </Heading>
+    </Box>
+    <Heading as="h2">
+      I'm a Software Engineer from 🇬🇹, working{" "}
+      <Link href="https://www.snapchat.com">@Snapchat</Link>, based in London 🇬🇧
+    </Heading>
+    <HStack>
+      <IconButton
+        aria-label="twitter"
+        icon={<FaTwitter />}
+        size="2xl"
+        fontSize={iconsSize}
+        variant="ghost"
+        onClick={() =>
+          window.open(
+            "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fkodr.me%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ediego_romero_x&region=follow_link&screen_name=diego_romero_x",
+            "_blank"
+          )
+        }
+      />
+      <IconButton
+        aria-label="Github"
+        icon={<FaGithub />}
+        size="2xl"
+        fontSize={iconsSize}
+        variant="ghost"
+        onClick={() => window.open("https://github.com/diego-romero", "_blank")}
+      />
+      <IconButton
+        aria-label="Linkedin"
+        icon={<FaLinkedin />}
+        size="2xl"
+        // colorScheme="linkedin"
+        fontSize={iconsSize}
+        variant="ghost"
+        onClick={() =>
+          window.open("https://www.linkedin.com/in/dev-diego-romero/", "_blank")
+        }
+      />
+    </HStack>
+    <Stack>
+      <Heading as="h3">About</Heading>
+      <Text>
+        I'm passionate about technology and software, particularly about toying
+        with emerging technologies.
+        <br />
+        <br />
+        Most recently I've been building projects with Typescript, Javascript,
+        Serverless technologies, Firebase, React, Node, Kotlin, Java and
+        Android. In my spare time you will find me working out, dancing latin
+        music (salsa/bachata) or playing guitar.
+      </Text>
+    </Stack>
+    <Stack>
+      <Heading as="h3">Featured Projects</Heading>
+      <List spacing={8}>
+        {featuredProjects.map((project) => (
+          <ListItem>
+            <Text fontWeight="bold" fontSize="xl" as="span">
+              <ListIcon as={project.icon} fontSize="xl" />
+              {project.title}
+            </Text>
+            <br />
+            {project.description.map((text, index) => (
+              <Text as="span" key={index}>
+                {text}
+                <br />
+              </Text>
+            ))}
+            <HStack mt={4}>
+              {project.links.map((link, index) => (
+                <Button
+                  key={index}
+                  rightIcon={<link.icon />}
+                  variant="outline"
+                  colorScheme="cyan"
+                  onClick={() => window.open(link.url, "_blank")}
+                >
+                  {link.name}
+                </Button>
+              ))}
+            </HStack>
+            <Flex flexDir="row" flexWrap="wrap" mt={2}>
+              {project.tags.map((tag, index) => (
+                <Badge
+                  variant="subtle"
+                  colorScheme="cyan"
+                  key={index}
+                  mt={2}
+                  mr={2}
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </Flex>
+          </ListItem>
+        ))}
+      </List>
+    </Stack>
+    <Stack>
+      <Heading as="h3">Featured Articles</Heading>
+      <Text>List featured articles</Text>
+    </Stack>
+  </Stack>
+);
+
 const Home: NextPage<Props> = (props) => {
   const { allPosts } = props;
   return (
@@ -163,141 +293,8 @@ const Home: NextPage<Props> = (props) => {
         justifyContent={["center", null, "space-between"]}
         height="100%"
       >
-        <Stack
-          spacing={[4, null, 8]}
-          width={["100%", null, "50%"]}
-          py={["4", null, "8"]}
-        >
-          <Avatar
-            size="4xl"
-            name="Diego Romero"
-            src="/images/profile-image.jpeg"
-            boxShadow="outline"
-          />
-          <Box>
-            <Heading
-              as="h1"
-              margin={0}
-              fontSize="8xl"
-              bgGradient={gradientMain}
-              bgClip="text"
-            >
-              Hola!
-            </Heading>
-            <Heading as="h1" margin={0} fontSize="6xl">
-              I'm Diego 🤙🏽
-            </Heading>
-          </Box>
-          <Heading as="h2">
-            I'm a Software Engineer from 🇬🇹, working{" "}
-            <Link href="https://www.snapchat.com">@Snapchat</Link>, based in
-            London 🇬🇧
-          </Heading>
-          <HStack>
-            <IconButton
-              aria-label="twitter"
-              icon={<FaTwitter />}
-              size="2xl"
-              fontSize={iconsSize}
-              variant="ghost"
-              // colorScheme="twitter"
-              onClick={() =>
-                window.open(
-                  "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fkodr.me%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ediego_romero_x&region=follow_link&screen_name=diego_romero_x",
-                  "_blank"
-                )
-              }
-            />
-            <IconButton
-              aria-label="Github"
-              icon={<FaGithub />}
-              size="2xl"
-              fontSize={iconsSize}
-              variant="ghost"
-              onClick={() =>
-                window.open("https://github.com/diego-romero", "_blank")
-              }
-            />
-            <IconButton
-              aria-label="Linkedin"
-              icon={<FaLinkedin />}
-              size="2xl"
-              // colorScheme="linkedin"
-              fontSize={iconsSize}
-              variant="ghost"
-              onClick={() =>
-                window.open(
-                  "https://www.linkedin.com/in/dev-diego-romero/",
-                  "_blank"
-                )
-              }
-            />
-          </HStack>
-          <Stack>
-            <Heading as="h3">About</Heading>
-            <Text>
-              I'm passionate about technology and software, particularly about
-              toying with emerging technologies.
-              <br />
-              <br />
-              Most recently I've been building projects with Typescript,
-              Javascript, Serverless technologies, Firebase, React, Node,
-              Kotlin, Java and Android. In my spare time you will find me
-              working out, dancing latin music (salsa/bachata) or playing
-              guitar.
-            </Text>
-          </Stack>
-          <Stack>
-            <Heading as="h3">Featured Projects</Heading>
-            <List spacing={8}>
-              {featuredProjects.map((project) => (
-                <ListItem>
-                  <Text fontWeight="bold" fontSize="xl" as="span">
-                    <ListIcon as={project.icon} fontSize="xl" />
-                    {project.title}
-                  </Text>
-                  <br />
-                  {project.description.map((text, index) => (
-                    <Text as="span" key={index}>
-                      {text}
-                      <br />
-                    </Text>
-                  ))}
-                  <HStack mt={4}>
-                    {project.links.map((link, index) => (
-                      <Button
-                        key={index}
-                        rightIcon={<link.icon />}
-                        variant="outline"
-                        colorScheme="cyan"
-                        onClick={() => window.open(link.url, "_blank")}
-                      >
-                        {link.name}
-                      </Button>
-                    ))}
-                  </HStack>
-                  <Flex flexDir="row" flexWrap="wrap" mt={2}>
-                    {project.tags.map((tag, index) => (
-                      <Badge
-                        variant="subtle"
-                        colorScheme="cyan"
-                        key={index}
-                        mt={2}
-                        mr={2}
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </Flex>
-                </ListItem>
-              ))}
-            </List>
-          </Stack>
-          <Stack>
-            <Heading as="h3">Featured Articles</Heading>
-            <Text>List featured articles</Text>
-          </Stack>
-        </Stack>
+        <LeftCol />
+        {/* Right Col */}
         <Stack
           justifyContent="flex-start"
           alignItems={["flex-start", null, "flex-end"]}

@@ -1,5 +1,5 @@
 ---
-title: "NextJS types of rendering"
+title: "Types of rendering in Next JS"
 description: "NextJS types of rendering"
 date: "2022-07-10"
 tags:
