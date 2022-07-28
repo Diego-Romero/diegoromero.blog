@@ -1,4 +1,15 @@
-import { Flex, Text, Stack, Heading, Box, Code } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  Stack,
+  Heading,
+  Box,
+  Code,
+  List,
+  ListItem,
+  Tag,
+  HStack,
+} from "@chakra-ui/react";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
@@ -7,6 +18,7 @@ import { Post } from "utils/posts";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // @ts-ignore
 import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import Date from "components/Date";
 
 interface Props {
   content: Post;
@@ -48,7 +60,7 @@ const myTheme: object = {
     </blockquote>
   ),
   h1: ({ children }: { children: React.ReactNode }) => (
-    <Heading as="h1" py={4} fontSize="6xl">
+    <Heading as="h1" fontSize="6xl">
       {children}
     </Heading>
   ),
@@ -67,12 +79,28 @@ const myTheme: object = {
 const ContentLayout = ({ content }: Props) => {
   return (
     <Flex flexDir={["column", null, "row"]} pb={8}>
-      <Stack width={["100%", null, "80%"]}>
+      <Stack maxW={["100%", null, "80%"]} py="4" pr="4">
         <ReactMarkdown
           components={ChakraUIRenderer(myTheme)}
           children={content.markdown}
           skipHtml
         />
+      </Stack>
+      <Stack
+        p="4"
+        width={["100%", null, "20%"]}
+        spacing="4"
+        borderLeft="1px solid"
+      >
+        <Date dateString={content.date} />
+        <Flex flexWrap="wrap">
+          {/* @ts-ignore */}
+          {content.tags.map((tag: string) => (
+            <Tag mb="2" mr="2" colorScheme="cyan" variant="subtle" size="lg">
+              {tag}
+            </Tag>
+          ))}
+        </Flex>
       </Stack>
     </Flex>
   );
