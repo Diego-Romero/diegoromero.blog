@@ -1,8 +1,6 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -53,24 +51,28 @@ export function getAllPostsIds() {
   return result;
 }
 
+export interface PostMeta {
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+}
+
 export interface Post {
   id: string;
-  contentHtml: string;
   [key: string]: string;
+  markdown: string;
 }
 
 export async function getPostData(id: string): Promise<Post> {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents: string = fs.readFileSync(fullPath, "utf8");
 
-  const { data, content } = matter(fileContents); // parses the content into a Json
-
-  const processedContent = await remark().use(html).process(content); // parses the content into markdown
-  const contentHtml = processedContent.toString();
+  const { data, content } = matter(fileContents); // parses into front matter and markdown
 
   return {
     id,
     ...data,
-    contentHtml,
+    markdown: content,
   };
 }

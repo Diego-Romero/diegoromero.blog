@@ -1,7 +1,6 @@
 import Layout from "../../layouts/layout";
 import { getAllPostsIds, Post, getPostData } from "../../utils/posts";
 import Head from "next/head";
-import Date from "../../components/Date";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 import ContentLayout from "../../layouts/content-layout";
@@ -16,11 +15,7 @@ export const PostPage: NextPage<Props> = ({ post }) => {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <Date dateString={post.date} />
-      <ContentLayout title={post.title}>
-        <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
-      </ContentLayout>
-      <div></div>
+      <ContentLayout content={post} />
     </Layout>
   );
 };

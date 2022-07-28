@@ -39,7 +39,6 @@ const NavBar = () => {
   return (
     <Flex
       as="header"
-      // color="gray.700"
       borderBottom="1px"
       borderColor={borderColor}
       py={4}
@@ -85,11 +84,10 @@ const NavBar = () => {
 };
 
 interface Props {
-  home?: boolean;
   children?: React.ReactNode;
 }
 
-const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
+const Layout: React.FunctionComponent<Props> = ({ children }) => {
   return (
     <Box>
       <Head>
@@ -114,11 +112,6 @@ const Layout: React.FunctionComponent<Props> = ({ children, home }) => {
           {children}
         </Box>
       </Flex>
-      {!home && (
-        <Flex>
-          <NavLink href="/" text="← Back to home" />
-        </Flex>
-      )}
     </Box>
   );
 };

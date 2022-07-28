@@ -283,7 +283,7 @@ const LeftCol = () => (
 const Home: NextPage<Props> = (props) => {
   const { allPosts } = props;
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>

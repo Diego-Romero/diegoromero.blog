@@ -9,7 +9,7 @@ tags:
   - javascript
 ---
 
-# Next JS
+# Types of rendering in Next JS
 
 ## Pre Rendering
 
