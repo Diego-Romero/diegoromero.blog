@@ -19,6 +19,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // @ts-ignore
 import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Date from "components/Date";
+import { borderColor } from "./layout";
 
 interface Props {
   content: Post;
@@ -90,7 +91,8 @@ const ContentLayout = ({ content }: Props) => {
         p="4"
         width={["100%", null, "20%"]}
         spacing="4"
-        borderLeft="1px solid"
+        borderLeft={`1px solid `}
+        borderColor={borderColor}
       >
         <Date dateString={content.date} />
         <Flex flexWrap="wrap">
