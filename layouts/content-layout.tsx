@@ -1,15 +1,4 @@
-import {
-  Flex,
-  Text,
-  Stack,
-  Heading,
-  Box,
-  Code,
-  List,
-  ListItem,
-  Tag,
-  HStack,
-} from "@chakra-ui/react";
+import { Flex, Text, Stack, Heading, Box, Code, Tag } from "@chakra-ui/react";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";

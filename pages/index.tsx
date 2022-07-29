@@ -230,8 +230,8 @@ const LeftCol = () => (
     <Stack>
       <Heading as="h3">Featured Projects</Heading>
       <List spacing={8}>
-        {featuredProjects.map((project) => (
-          <ListItem>
+        {featuredProjects.map((project, index) => (
+          <ListItem key={index}>
             <Text fontWeight="bold" fontSize="xl" as="span">
               <ListIcon as={project.icon} fontSize="xl" />
               {project.title}

@@ -7,7 +7,7 @@ const Date: React.FunctionComponent<{ dateString: string }> = ({
   const date = parseISO(dateString);
   const formatted = format(date, "LLLL d, yyyy");
   return (
-    <Text fontSize="lg" mt="4" color="GrayText">
+    <Text as="span" fontSize="lg" mt="4" color="GrayText">
       <time dateTime={dateString}>{formatted}</time>
     </Text>
   );
