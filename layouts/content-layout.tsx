@@ -5,7 +5,7 @@ import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { Post } from "utils/posts";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Date from "components/Date";
 import { borderColor } from "./layout";
 
@@ -19,13 +19,14 @@ const CodeBlock = ({ node, inline, className, children, ...props }) => {
   return !inline && match ? (
     <Box boxShadow="lg">
       <SyntaxHighlighter
-        children={String(children).replace(/\n$/, "")}
-        style={vscDarkPlus}
+        style={materialDark}
         showLineNumbers
         language={match[1]}
         PreTag="div"
         {...props}
-      />
+      >
+        {children}
+      </SyntaxHighlighter>
     </Box>
   ) : (
     <Code className={className} {...props} children={children} />

@@ -173,11 +173,11 @@ const LeftCol = () => (
         Hola!
       </Heading>
       <Heading as="h1" margin={0} fontSize="6xl">
-        I'm Diego 🤙🏽
+        I&apos;m Diego 🤙🏽
       </Heading>
     </Box>
     <Heading as="h2">
-      I'm a Software Engineer from 🇬🇹, working{" "}
+      I&apos;m a Software Engineer from 🇬🇹, working{" "}
       <Link href="https://www.snapchat.com">@Snapchat</Link>, based in London 🇬🇧
     </Heading>
     <HStack>
@@ -217,14 +217,14 @@ const LeftCol = () => (
     <Stack>
       <Heading as="h3">About</Heading>
       <Text>
-        I'm passionate about technology and software, particularly about toying
-        with emerging technologies.
+        I&apos;m passionate about technology and software, particularly about
+        toying with emerging technologies.
         <br />
         <br />
-        Most recently I've been building projects with Typescript, Javascript,
-        Serverless technologies, Firebase, React, Node, Kotlin, Java and
-        Android. In my spare time you will find me working out, dancing latin
-        music (salsa/bachata) or playing guitar.
+        Most recently I&apos;ve been building projects with Typescript,
+        Javascript, Serverless technologies, Firebase, React, Node, Kotlin, Java
+        and Android. In my spare time you will find me working out, dancing
+        latin music (salsa/bachata) or playing guitar.
       </Text>
     </Stack>
     <Stack>
