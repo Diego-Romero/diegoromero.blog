@@ -51,17 +51,15 @@ export function getAllPostsIds() {
   return result;
 }
 
-export interface PostMeta {
+export interface PostMeta {}
+
+export interface Post {
+  id: string;
+  markdown: string;
   title: string;
   description: string;
   date: string;
   tags: string[];
-}
-
-export interface Post {
-  id: string;
-  [key: string]: string;
-  markdown: string;
 }
 
 export async function getPostData(id: string): Promise<Post> {
@@ -72,7 +70,10 @@ export async function getPostData(id: string): Promise<Post> {
 
   return {
     id,
-    ...data,
     markdown: content,
+    title: data.title,
+    description: data.description,
+    date: data.date,
+    tags: data.tags,
   };
 }

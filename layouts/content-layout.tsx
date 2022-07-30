@@ -5,8 +5,7 @@ import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { Post } from "utils/posts";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-// @ts-ignore
-import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Date from "components/Date";
 import { borderColor } from "./layout";
 
@@ -21,7 +20,7 @@ const CodeBlock = ({ node, inline, className, children, ...props }) => {
     <Box boxShadow="lg">
       <SyntaxHighlighter
         children={String(children).replace(/\n$/, "")}
-        style={nightOwl}
+        style={vscDarkPlus}
         showLineNumbers
         language={match[1]}
         PreTag="div"
@@ -85,9 +84,15 @@ const ContentLayout = ({ content }: Props) => {
       >
         <Date dateString={content.date} />
         <Flex flexWrap="wrap">
-          {/* @ts-ignore */}
-          {content.tags.map((tag: string) => (
-            <Tag mb="2" mr="2" colorScheme="cyan" variant="subtle" size="lg">
+          {content.tags.map((tag: string, index: number) => (
+            <Tag
+              mb="2"
+              mr="2"
+              colorScheme="cyan"
+              variant="subtle"
+              size="lg"
+              key={index}
+            >
               {tag}
             </Tag>
           ))}
