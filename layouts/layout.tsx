@@ -7,11 +7,15 @@ import {
   HStack,
   IconButton,
   Link,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Text,
   useColorMode,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { FaBars, FaMoon, FaSun } from "react-icons/fa";
 
 export const siteTitle = "Diego Romero - Blog";
 
@@ -36,6 +40,17 @@ const NavLink: React.FunctionComponent<{ href: string; text: string }> = ({
 const NavBar = () => {
   const router = useRouter();
   const { colorMode, toggleColorMode } = useColorMode();
+  const LightDarkMode = () => (
+    <IconButton
+      aria-label="toggle color mode"
+      variant="ghost"
+      colorScheme="cyan"
+      fontSize="xl"
+      size="md"
+      icon={colorMode === "light" ? <FaMoon /> : <FaSun />}
+      onClick={toggleColorMode}
+    />
+  );
   return (
     <Flex
       as="header"
@@ -64,19 +79,35 @@ const NavBar = () => {
         >
           Diego Romero
         </Text>
-        <HStack spacing="4">
+        <HStack spacing="4" display={["none", null, "flex"]}>
           <NavLink href="/blog" text="Blog" />
           <NavLink href="/projects" text="Projects" />
           <NavLink href="/Books" text="Books" />
-          <IconButton
-            aria-label="toggle color mode"
-            variant="ghost"
-            colorScheme="cyan"
-            fontSize="xl"
-            size="md"
-            icon={colorMode === "light" ? <FaMoon /> : <FaSun />}
-            onClick={toggleColorMode}
-          />
+          <LightDarkMode />
+        </HStack>
+        <HStack spacing={0} display={["flex", null, "none"]}>
+          <LightDarkMode />
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              aria-label="Options"
+              icon={<FaBars />}
+              variant="ghost"
+              fontSize="xl"
+              colorScheme="cyan"
+            />
+            <MenuList>
+              <MenuItem>
+                <NavLink href="/blog" text="Blog" />
+              </MenuItem>
+              <MenuItem>
+                <NavLink href="/projects" text="Projects" />
+              </MenuItem>
+              <MenuItem>
+                <NavLink href="/Books" text="Books" />
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </HStack>
       </Flex>
     </Flex>
