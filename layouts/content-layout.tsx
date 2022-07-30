@@ -29,7 +29,9 @@ const CodeBlock = ({ node, inline, className, children, ...props }) => {
       </SyntaxHighlighter>
     </Box>
   ) : (
-    <Code className={className} {...props} children={children} />
+    <Code className={className} {...props}>
+      {children}
+    </Code>
   );
 };
 
@@ -43,7 +45,7 @@ const myTheme: object = {
   blockquote: ({ children }: { children: React.ReactNode }) => (
     <blockquote>
       <Flex borderLeft="5px solid" borderColor="gray.300" alignItems="center">
-        <Text fontSize="lg" ml="3" verticalAlign="center">
+        <Text as="span" fontSize="lg" ml="3" verticalAlign="center">
           {children}
         </Text>
       </Flex>
@@ -70,11 +72,9 @@ const ContentLayout = ({ content }: Props) => {
   return (
     <Flex flexDir={["column", null, "row"]} pb={8}>
       <Stack maxW={["100%", null, "80%"]} py="4" pr="4">
-        <ReactMarkdown
-          components={ChakraUIRenderer(myTheme)}
-          children={content.markdown}
-          skipHtml
-        />
+        <ReactMarkdown components={ChakraUIRenderer(myTheme)} skipHtml>
+          {content.markdown}
+        </ReactMarkdown>
       </Stack>
       <Stack
         p="4"
@@ -90,8 +90,8 @@ const ContentLayout = ({ content }: Props) => {
               mb="2"
               mr="2"
               colorScheme="cyan"
-              variant="subtle"
-              size="lg"
+              variant="outline"
+              size="md"
               key={index}
             >
               {tag}
