@@ -1,5 +1,5 @@
 import { format, parseISO } from "date-fns";
-import { Badge, Tag } from "@chakra-ui/react";
+import { Tag } from "@chakra-ui/react";
 
 interface Props {
   dateString: string;
