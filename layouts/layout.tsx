@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FaBars, FaMoon, FaSun } from "react-icons/fa";
+import { defaultColorScheme } from "theme";
 
 export const siteTitle = "Diego Romero - Blog";
 
@@ -44,7 +45,7 @@ const NavBar = () => {
     <IconButton
       aria-label="toggle color mode"
       variant="ghost"
-      colorScheme="cyan"
+      colorScheme={defaultColorScheme}
       fontSize="xl"
       size="md"
       icon={colorMode === "light" ? <FaMoon /> : <FaSun />}

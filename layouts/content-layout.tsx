@@ -1,4 +1,13 @@
-import { Flex, Text, Stack, Heading, Box, Code, Tag } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  Stack,
+  Heading,
+  Box,
+  Code,
+  Tag,
+  useColorMode,
+} from "@chakra-ui/react";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
@@ -9,6 +18,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Date from "components/Date";
 import { borderColor } from "./layout";
+import { defaultColorScheme } from "theme";
 
 interface Props {
   content: Post;
@@ -43,17 +53,30 @@ const myTheme: object = {
       {children}
     </Text>
   ),
-  blockquote: ({ children }: { children: React.ReactNode }) => (
-    <blockquote>
-      <Flex borderLeft="5px solid" borderColor="gray.300" alignItems="center">
-        <Text as="span" fontSize="lg" ml="3" verticalAlign="center">
-          {children}
-        </Text>
-      </Flex>
-    </blockquote>
-  ),
+  blockquote: ({ children }: { children: React.ReactNode }) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { colorMode } = useColorMode();
+    const isLight = colorMode === "light";
+    return (
+      <blockquote>
+        <Flex
+          borderLeft="5px solid"
+          borderColor={isLight ? "gray.300" : "gray.500"}
+          alignItems="center"
+          bgColor={isLight ? "gray.100" : "gray.700"}
+          justifyContent="center"
+          py={2}
+          mb={2}
+        >
+          <Text as="span" fontSize="lg" ml="3" verticalAlign="center">
+            {children}
+          </Text>
+        </Flex>
+      </blockquote>
+    );
+  },
   h1: ({ children }: { children: React.ReactNode }) => (
-    <Heading as="h1" fontSize="6xl">
+    <Heading as="h1" fontSize="6xl" mb={4}>
       {children}
     </Heading>
   ),
@@ -90,7 +113,7 @@ const ContentLayout = ({ content }: Props) => {
             <Tag
               mb="2"
               mr="2"
-              colorScheme="cyan"
+              colorScheme={defaultColorScheme}
               variant="outline"
               size="md"
               key={index}

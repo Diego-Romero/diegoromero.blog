@@ -35,6 +35,7 @@ import {
 } from "react-icons/fa";
 import { IconType } from "react-icons";
 import React from "react";
+import { defaultColorScheme } from "theme";
 
 interface Props {
   allPosts: Post[];
@@ -249,7 +250,7 @@ const LeftCol = () => (
                   key={index}
                   rightIcon={<link.icon />}
                   variant="outline"
-                  colorScheme="cyan"
+                  colorScheme={defaultColorScheme}
                   onClick={() => window.open(link.url, "_blank")}
                 >
                   {link.name}
@@ -260,7 +261,7 @@ const LeftCol = () => (
               {project.tags.map((tag, index) => (
                 <Badge
                   variant="subtle"
-                  colorScheme="cyan"
+                  colorScheme={defaultColorScheme}
                   key={index}
                   mt={2}
                   mr={2}
