@@ -294,7 +294,6 @@ const Home: NextPage<Props> = (props) => {
         height="100%"
       >
         <LeftCol />
-        {/* Right Col */}
         <Stack
           justifyContent="flex-start"
           alignItems={["flex-start", null, "flex-end"]}

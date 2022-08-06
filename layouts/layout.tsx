@@ -94,7 +94,7 @@ const NavBar = () => {
               icon={<FaBars />}
               variant="ghost"
               fontSize="xl"
-              colorScheme="cyan"
+              colorScheme="cya"
             />
             <MenuList>
               <MenuItem>
