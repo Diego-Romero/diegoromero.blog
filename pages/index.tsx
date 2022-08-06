@@ -6,7 +6,6 @@ import Layout, {
 } from "../layouts/layout";
 import { getSortedPostsData, Post } from "../utils/posts";
 import NextLink from "next/link";
-import Date from "../components/Date";
 import { GetStaticProps, NextPage } from "next";
 import {
   Avatar,
@@ -23,134 +22,18 @@ import {
   ListItem,
   Stack,
   Text,
-  UnorderedList,
 } from "@chakra-ui/react";
-import {
-  FaCode,
-  FaExternalLinkAlt,
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-  FaYoutube,
-} from "react-icons/fa";
-import { IconType } from "react-icons";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import React from "react";
 import { defaultColorScheme } from "theme";
+import { DateComponent } from "components/DateComponent";
+import { projects } from "../data/projects";
 
 interface Props {
   allPosts: Post[];
 }
 
 const iconsSize = "4xl";
-const tags = {
-  typescript: "Typescript",
-  react: "React",
-  nextjs: "Next JS",
-  firebase: "Firebase",
-  googleCloudFunctions: "Google Cloud Functions",
-  vercel: "Vercel",
-  mouseTrap: "Mouse Trap",
-  netlify: "Netlify",
-  mongoDb: "Mongo DB",
-  node: "Node",
-  express: "Express",
-  aws: "Aws",
-  passportJs: "Passport JS",
-  sendgrid: "Sendgrid",
-  docusaurus: "Docusaurus",
-};
-const featuredProjects: {
-  title: string;
-  description: string[];
-  url: string;
-  tags: string[];
-  links: { name: string; url: string; icon: IconType }[];
-  icon: IconType;
-}[] = [
-  {
-    title: "Deepflow",
-    description: [
-      "Deepflow is a software research project whose focus is to find out whether it is possible to help the user achieve more and better periods of Deep Work.",
-    ],
-    icon: FaCode,
-    url: "http://deepflow.vercel.app",
-    links: [
-      {
-        name: "Website",
-        url: "http://deepflow.vercel.app",
-        icon: FaExternalLinkAlt,
-      },
-      {
-        name: "Github",
-        url: "https://github.com/Diego-Romero/deepflow",
-        icon: FaGithub,
-      },
-      {
-        name: "Demo",
-        url: "https://www.youtube.com/watch?v=A3RsoN5fAz4",
-        icon: FaYoutube,
-      },
-    ],
-    tags: [
-      tags.typescript,
-      tags.react,
-      tags.firebase,
-      tags.googleCloudFunctions,
-      tags.nextjs,
-      tags.vercel,
-    ],
-  },
-  {
-    title: "Listu",
-    description: [
-      "Looking to keep track of lists with your friends, team-mates, etc?",
-    ],
-    icon: FaCode,
-    url: "https://listu.me",
-    links: [
-      {
-        name: "Website",
-        url: "https://listu.me",
-        icon: FaExternalLinkAlt,
-      },
-      {
-        name: "Github Client",
-        url: "https://github.com/Diego-Romero/listu-client",
-        icon: FaGithub,
-      },
-      {
-        name: "Github API",
-        url: "https://github.com/Diego-Romero/listu-api",
-        icon: FaGithub,
-      },
-    ],
-    tags: [
-      tags.typescript,
-      tags.react,
-      tags.node,
-      tags.express,
-      tags.aws,
-      tags.mongoDb,
-    ],
-  },
-  {
-    title: "KODR",
-    description: [
-      "Looking to learn some fundamentals about algorithms in other languages different than English? ",
-    ],
-    icon: FaCode,
-    url: "https://listu.me",
-    links: [
-      {
-        name: "Website",
-        url: "https://kodr.me/en",
-        icon: FaExternalLinkAlt,
-      },
-    ],
-    tags: [tags.typescript, tags.react, tags.netlify, tags.docusaurus],
-  },
-];
-
 const LeftCol = () => (
   <Stack
     spacing={[4, null, 8]}
@@ -231,7 +114,7 @@ const LeftCol = () => (
     <Stack>
       <Heading as="h3">Featured Projects</Heading>
       <List spacing={8}>
-        {featuredProjects.map((project, index) => (
+        {projects.map((project, index) => (
           <ListItem key={index}>
             <Text fontWeight="bold" fontSize="xl" as="span">
               <ListIcon as={project.icon} fontSize="xl" />
@@ -304,22 +187,22 @@ const Home: NextPage<Props> = (props) => {
           pl={[null, null, "10"]}
           py={[null, null, "8"]}
         >
-          <Heading as="h3" fontSize="3xl">
+          <Heading as="h3" fontSize="3xl" mb={2}>
             Latest Articles
           </Heading>
-          <UnorderedList>
+          <List>
             {allPosts.map(({ id, date, title }) => (
-              <ListItem key={id}>
+              <ListItem key={id} mb={4}>
                 <NextLink href={`/blog/${id}`} passHref>
                   <Link>{title}</Link>
                 </NextLink>
                 <br />
-                <Text color="gray.500">
-                  <Date dateString={date} />
-                </Text>
+                <Box color="gray.500">
+                  <DateComponent dateString={date} />
+                </Box>
               </ListItem>
             ))}
-          </UnorderedList>
+          </List>
         </Stack>
       </Flex>
     </Layout>

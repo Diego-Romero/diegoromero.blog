@@ -7,7 +7,7 @@ tags:
   - pomodoro-technique
 ---
 
-# Blog 1: productivity - concentration and Pomodoro technique
+# Productivity, Concentration and Pomodoro technique
 
 ![concentration-image](/images/posts/concentration-image.jpeg)
 

@@ -1,0 +1,17 @@
+export const tags = {
+  typescript: "Typescript",
+  react: "React",
+  nextjs: "Next JS",
+  firebase: "Firebase",
+  googleCloudFunctions: "Google Cloud Functions",
+  vercel: "Vercel",
+  mouseTrap: "Mouse Trap",
+  netlify: "Netlify",
+  mongoDb: "Mongo DB",
+  node: "Node",
+  express: "Express",
+  aws: "Aws",
+  passportJs: "Passport JS",
+  sendgrid: "Sendgrid",
+  docusaurus: "Docusaurus",
+};

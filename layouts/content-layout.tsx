@@ -16,9 +16,10 @@ import { Post } from "utils/posts";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // @ts-ignore
 import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import Date from "components/Date";
 import { borderColor } from "./layout";
 import { defaultColorScheme } from "theme";
+import { DateComponent } from "components/DateComponent";
+import Tags from "components/Tags";
 
 interface Props {
   content: Post;
@@ -102,26 +103,13 @@ const ContentLayout = ({ content }: Props) => {
       </Stack>
       <Stack
         p="4"
-        width={["100%", null, "20%"]}
+        width={["100%", null, "15%"]}
         spacing="4"
         borderLeft={`1px solid `}
         borderColor={borderColor}
       >
-        <Date dateString={content.date} />
-        <Flex flexWrap="wrap">
-          {content.tags.map((tag: string, index: number) => (
-            <Tag
-              mb="2"
-              mr="2"
-              colorScheme={defaultColorScheme}
-              variant="outline"
-              size="md"
-              key={index}
-            >
-              {tag}
-            </Tag>
-          ))}
-        </Flex>
+        <DateComponent dateString={content.date} />
+        <Tags direction="vertical" tags={content.tags} />
       </Stack>
     </Flex>
   );
