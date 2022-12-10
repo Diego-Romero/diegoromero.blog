@@ -5,7 +5,6 @@ import {
   Heading,
   Box,
   Code,
-  Tag,
   useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
@@ -17,7 +16,6 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // @ts-ignore
 import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { borderColor } from "./layout";
-import { defaultColorScheme } from "theme";
 import { DateComponent } from "components/DateComponent";
 import Tags from "components/Tags";
 

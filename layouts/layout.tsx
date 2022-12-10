@@ -81,9 +81,9 @@ const NavBar = () => {
           Diego Romero
         </Text>
         <HStack spacing="4" display={["none", null, "flex"]}>
-          <NavLink href="/blog" text="Blog" />
+          <NavLink href="/blogs" text="Blog" />
           <NavLink href="/projects" text="Projects" />
-          <NavLink href="/Books" text="Books" />
+          <NavLink href="/books" text="Books" />
           <LightDarkMode />
         </HStack>
         <HStack spacing={0} display={["flex", null, "none"]}>

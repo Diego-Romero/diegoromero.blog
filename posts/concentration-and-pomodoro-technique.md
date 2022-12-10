@@ -5,6 +5,7 @@ date: "2020-03-06"
 tags:
   - productivity
   - pomodoro-technique
+  - blog
 ---
 
 # Productivity, Concentration and Pomodoro technique
