@@ -40,7 +40,7 @@ export const BlogIndex: React.FunctionComponent<Props> = ({ allPosts }) => {
             >
               <Stack>
                 <HStack>
-                  <NextLink href={`/blog/${post.id}`} passHref>
+                  <NextLink href={`/blogs/${post.id}`} passHref>
                     <Link>👉🏽 {post.title}</Link>
                   </NextLink>
                   <Box color="gray.500" mt={2}>
