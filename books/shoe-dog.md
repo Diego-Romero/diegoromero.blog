@@ -1,7 +1,7 @@
 ---
 title: "Shoe Dog"
 description: "Biography of the creator of Nike"
-date: "2022-12-10"
+date: "2022-11-20"
 author: "Phil Knight"
 fiction: "Non-Fiction"
 rating: "5-Star"
