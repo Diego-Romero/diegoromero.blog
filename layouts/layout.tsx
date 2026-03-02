@@ -84,6 +84,7 @@ const NavBar = () => {
           <NavLink href="/blogs" text="Blog" />
           <NavLink href="/projects" text="Projects" />
           <NavLink href="/books" text="Books" />
+          <NavLink href="/protocols" text="Protocols" />
           <LightDarkMode />
         </HStack>
         <HStack spacing={0} display={["flex", null, "none"]}>
@@ -99,13 +100,16 @@ const NavBar = () => {
             />
             <MenuList>
               <MenuItem>
-                <NavLink href="/blog" text="Blog" />
+                <NavLink href="/blogs" text="Blog" />
               </MenuItem>
               <MenuItem>
                 <NavLink href="/projects" text="Projects" />
               </MenuItem>
               <MenuItem>
-                <NavLink href="/Books" text="Books" />
+                <NavLink href="/books" text="Books" />
+              </MenuItem>
+              <MenuItem>
+                <NavLink href="/protocols" text="Protocols" />
               </MenuItem>
             </MenuList>
           </Menu>
