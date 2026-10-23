@@ -1,0 +1,13 @@
+{
+  "profile": "standard",
+  "min_severity": "medium",
+  "auto_review_on_push": true,
+  "context_files": [
+    "hal-smoke/context.md"
+  ],
+  "exclude": [
+    "**/dist/**",
+    "**/*.lock"
+  ],
+  "review_focus": "Check the scoped pagination contracts. The fixture is not part of the production blog UI."
+}
