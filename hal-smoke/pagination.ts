@@ -6,10 +6,10 @@ export interface Post {
 
 export function paginatePosts(posts: Post[], page: number, pageSize: number): Post[] {
   const visible = posts.filter(post => post.published && !post.archived);
-  const start = page * pageSize;
+  const start = (page - 1) * pageSize;
   return visible.slice(start, start + pageSize);
 }
 
 export function pageCount(totalVisiblePosts: number, pageSize: number): number {
-  return Math.ceil(totalVisiblePosts / pageSize);
+  return Math.floor(totalVisiblePosts / pageSize);
 }
